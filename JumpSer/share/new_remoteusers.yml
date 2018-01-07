@@ -1,0 +1,21 @@
+
+
+user0:
+  auth_type:  ssh-password
+  username: root
+  password: abc!23
+
+user1:
+  auth_type:  ssh-password
+  username: root
+  password: jacky!34321df
+
+user2:
+  auth_type:  ssh-key
+  username: root
+  #password: abc!23
+
+user3:
+  auth_type:  ssh-password
+  username: jacky
+  password: jacky123

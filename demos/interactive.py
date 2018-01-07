@@ -46,6 +46,8 @@ def posix_shell(chan):
         tty.setcbreak(sys.stdin.fileno())
         chan.settimeout(0.0)
 
+        cmd = []
+
         while True:
             r, w, e = select.select([chan, sys.stdin], [], [])
             if chan in r:
@@ -62,6 +64,12 @@ def posix_shell(chan):
                 x = sys.stdin.read(1)
                 if len(x) == 0:
                     break
+                if x == "\r":
+                    cmd_str = "".join(cmd)
+                    cmd = []
+                    print("--->",cmd_str)
+                else:
+                    cmd.append(x)
                 chan.send(x)
 
     finally:
